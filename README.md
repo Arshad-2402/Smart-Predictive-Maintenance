@@ -55,6 +55,7 @@ The system integrates an ESP32 microcontroller with sensors and alert components
 
 📁 Repository Structure
 
+```text
 Smart-Predictive-Maintenance/
 ├── firmware/
 │   ├── Smart_Predictive_Maintenance.ino
@@ -69,6 +70,8 @@ Smart-Predictive-Maintenance/
 │   └── pin-map.md
 ├── .gitignore
 └── README.md
+```
+
 
 🎓 Project Context
 
