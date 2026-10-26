@@ -1,52 +1,99 @@
-# Smart Predictive Maintenance System (ECS 2003)
+Smart Predictive Maintenance System (ECS 2003)
 
-A low-cost ESP32-based condition-monitoring prototype intended to demonstrate how machine temperature, vibration, and electrical current can be observed to flag potentially abnormal operating conditions.
+An ESP32-based Smart Predictive Maintenance System designed to monitor factory machine operating conditions using vibration, temperature, and electrical current measurements. The system processes sensor readings, displays machine status on an SPI TFT display, and provides visual and audible alerts when configured thresholds are exceeded.
 
-> **Project status:** Academic prototype / under development. The repository documents the current design and demonstration materials; it does not claim industrial validation or fully validated predictive-maintenance accuracy.
+📌 Project Overview
 
-## Prototype overview
+Unexpected machine failures can interrupt production, increase maintenance costs, and affect operational efficiency. This project demonstrates a low-cost embedded monitoring approach that helps identify potentially abnormal machine operating conditions through sensor-based monitoring.
 
-- **Controller:** ESP32 DevKit V1
-- **Vibration sensing:** SW-420 vibration module
-- **Current sensing:** ACS712 20 A module (the analog interface/divider and calibration still need validation)
-- **Temperature sensing:** Three-pin analog temperature module was discussed for the physical setup. The reference firmware in this repository currently uses a **DHT11 temperature/humidity sensor**, so confirm the exact module before uploading or adapt the code.
-- **Display:** KMR-1.8 SPI TFT, 128 × 160
-- **Indicators:** Green LED, red LED, buzzer
-- **Demonstration load:** Small DC motor with separate motor supply
+The system integrates an ESP32 microcontroller with sensors and alert components to provide real-time condition monitoring for a small DC motor demonstration setup.
 
-## Repository contents
+🎯 Objectives
 
-- `firmware/Smart_Predictive_Maintenance.ino` — reference firmware extracted from the report appendix; **not verified as compile-ready for the current physical wiring**.
-- `firmware/README.md` — configuration and safety notes before upload.
-- `circuit-diagrams/esp32-factory-maintenance-wiring.png` — wiring reference diagram.
-- `images/prototype-actual-photo.jpg` — photo of the physical prototype.
-- `docs/project-report.pdf` — project report.
-- `docs/components-and-costs.md` — component overview and approximate costs.
-- `docs/pin-map.md` — pin map from the report appendix; verify against actual wiring.
+- Monitor machine vibration, temperature, and electrical current.
+- Identify potentially abnormal operating conditions using configured thresholds.
+- Display sensor information and machine status on a TFT display.
+- Provide visual alerts through LEDs and audible alerts through a buzzer.
+- Demonstrate an affordable embedded-systems approach to machine condition monitoring.
 
-## Intended operation
+⚙️ Hardware Components
 
-1. Read sensor inputs through the ESP32.
-2. Compare readings with configurable threshold values.
-3. Show a machine status on the TFT and serial monitor.
-4. Use LEDs and a buzzer to indicate a warning state.
+- ESP32 DevKit V1 — main controller
+- SW-420 vibration sensor — vibration detection
+- ACS712 20A current sensor — electrical current measurement
+- Temperature sensor module — temperature monitoring
+- KMR-1.8 SPI TFT display (128 × 160) — status and readings
+- Green and red LEDs — status indication
+- Buzzer — audible warning
+- Small DC motor and separate power supply — demonstration load
+- Breadboard, jumper wires, and supporting components
 
-The thresholds in the reference code are demonstration values only. They must be tuned for the actual motor and sensors, and must not be treated as industrial safety limits.
+💻 Technologies Used
 
-## Setup
+- Programming language: C++
+- Development environment: Arduino IDE
+- Microcontroller platform: ESP32
+- Embedded systems: Sensor interfacing and GPIO control
+- Monitoring method: Threshold-based condition monitoring
 
-1. Open the `.ino` file in Arduino IDE.
-2. Install the libraries listed in `firmware/README.md`.
-3. Verify the exact temperature sensor, TFT controller/tab setting, GPIO wiring, ACS712 variant, divider ratio, and zero-current calibration.
-4. Compile and test with the motor supply disconnected first.
-5. Test the alert outputs using safe, controlled conditions before connecting the motor supply.
+🔄 Working Principle
 
-## Limitations
+1. The sensors collect information about the motor's operating conditions.
+2. The ESP32 reads and processes the available sensor measurements.
+3. The readings are compared against configured threshold values.
+4. The TFT display presents the sensor information and machine status.
+5. LEDs and the buzzer indicate warning conditions when the configured limits are exceeded.
 
-- This is a low-cost academic prototype, not a certified industrial monitoring or safety device.
-- Current-sensor readings have previously appeared unstable; validate the analog interface and calibration before relying on current thresholds.
-- Predictive capability should not be claimed unless a suitable dataset/model and evaluation results are actually implemented and measured.
+✨ Key Features
 
-## Credits
+- Multi-parameter machine condition monitoring
+- ESP32-based sensor integration
+- Real-time status display
+- Visual and audible warning indicators
+- Low-cost hardware implementation
+- Modular design for future improvements
 
-Developed as an ECS academic project at VIT-AP. Refer to the project report for the team and guidance details.
+📁 Repository Structure
+
+Smart-Predictive-Maintenance/
+├── firmware/
+│   ├── Smart_Predictive_Maintenance.ino
+│   └── README.md
+├── images/
+│   └── prototype-actual-photo.jpg
+├── circuit-diagrams/
+│   └── esp32-factory-maintenance-wiring.png
+├── docs/
+│   ├── project-report.pdf
+│   ├── components-and-costs.md
+│   └── pin-map.md
+├── .gitignore
+└── README.md
+
+🎓 Project Context
+
+- Project: Smart Predictive Maintenance System
+- Project Code: ECS 2003
+- Domain: Embedded Systems, IoT, and Industrial Condition Monitoring
+- Platform: ESP32
+- Application: Factory machine condition monitoring
+
+🚀 Future Enhancements
+
+- Improve sensor calibration and measurement accuracy.
+- Add data logging and historical trend analysis.
+- Develop a dashboard for remote monitoring.
+- Explore machine-learning-based anomaly detection using collected sensor data.
+- Evaluate the system under different operating conditions.
+
+📚 Documentation
+
+Refer to the "docs/" directory for the project report, component details, approximate costs, and pin mapping. See "circuit-diagrams/" for the wiring reference and "firmware/" for the ESP32 program.
+
+👥 Acknowledgment
+
+Developed as part of the Engineering and Computer Science (ECS) academic project.
+
+---
+
+Note: The project demonstrates sensor-based condition monitoring using configured thresholds. Predicting future machine failures would require additional data collection, analysis, and validation.
